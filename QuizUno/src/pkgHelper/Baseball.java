@@ -21,23 +21,25 @@ public class Baseball {
 		this.BBs = bb;
 	}
 	public double battingAverage() {
-		return Hits/ABs;
+		return (double)Hits / ABs;
 	}
 	public double OBP() {
-		return (Hits+BBs)/(ABs + BBs);
+		return ((double)Hits+BBs)/(ABs + BBs);
 	}
 	public double slug() {
-		int singles = Hits - Doubles-Triples-HRs;
-		return (Doubles*2 + Triples*3 + HRs*4 + BBs + singles)/ABs;
+		double singles = (double) Hits - Doubles-Triples-HRs;
+		return (Doubles*2 + Triples*3 + HRs*4 +singles)/ABs;
 	}
 	public double onBasePlusSlug(){
 		return OBP() + slug();
 	}
 	public int totalBases() {
 		int singles = Hits - Doubles-Triples-HRs;
-		return Doubles*2 + Triples*3 + HRs*4 + BBs + singles;
+		return Doubles*2 + Triples*3 + HRs*4 + singles;
 	}
 	public String toString() {
-		return Name;
+		return Name+"'s stats\nBatting Average: "
+				+String.format("%.3f",battingAverage())+"\nOBP: "+String.format("%.3f",OBP())+"\nSLG: "+String.format("%.3f",slug())
+				+"\nOPS: "+String.format("%.3f",onBasePlusSlug())+"\nTotal Bases: "+totalBases();
 	}
 }
